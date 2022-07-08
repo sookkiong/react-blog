@@ -1,5 +1,13 @@
-.App {
+  .App {
   text-align: center;
+}
+.black-nav{
+  display:flex;
+  background:#000;
+  width:100%;
+  color:#fff;
+  padding-left:20px;
+  /* justify-content: center; */
 }
 
 .App-logo {
