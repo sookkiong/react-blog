@@ -8,7 +8,7 @@ function App() {
   let post= '강남 우동 맛집';
   let [title, setTitle] = useState( ['남자코트 추천', '강남 우동 맛집', '파이썬 독학'] );
   let [따봉, 따봉변경] = useState(0);
-
+  let [modal, setModal] = useState(false);
   
   return (
     <div className="App">
@@ -42,11 +42,12 @@ function App() {
       </div>
 
       <div className="list">
-        <h4>{ title[2] }</h4>
+        <h4 onClick={ () => setModal(!modal) }>{ title[2] }</h4>
         <p>2월 17일 발행</p>
       </div>
 
-      <Modal/>
+     {modal === true ? <Modal/> : null}
+      
       <Practice/>
     </div>
   );
