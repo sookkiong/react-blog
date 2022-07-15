@@ -51,8 +51,9 @@ function App() {
 
       <input onChange={(e) => { 
         입력값변경(e.target.value);
-        console.log(입력값)
-        }} />
+      }} />
+
+      <button onClick={() => {따봉변경([0, ...따봉]); setTitle([입력값, ...title])}}>글생성</button>
 
       {
         onModal === true 
