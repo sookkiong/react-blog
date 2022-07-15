@@ -10,6 +10,7 @@ function App() {
   let [따봉, 따봉변경] = useState([0,0,0]);
   let [onModal, setOnModal] = useState(false);
   let [title2, setTitle2] = useState(0);
+  let [입력값, 입력값변경] = useState('');
 
   return (
     <div className="App">
@@ -18,7 +19,6 @@ function App() {
       </div>
 
       <button onClick={ () => {
-        // arr에 title 배열을 받아와서 sort()로 가나다순 정렬을 한 뒤 state변경을 함
         let arr = [...title];
         arr.sort();
         setTitle(arr);
@@ -37,7 +37,8 @@ function App() {
         title.map(function(v,i){
           return(
             <div className="list" key={i}>
-            <h4 onClick={ () => {setOnModal(true); setTitle2(i)} }>{ v } <span onClick={() => {
+            <h4 onClick={ () => {setOnModal(true); setTitle2(i)} }>{ v } <span onClick={(e) => {
+              e.stopPropagation();
               const mapArr = [...따봉];
               mapArr[i]++;
               따봉변경(mapArr);
@@ -48,17 +49,20 @@ function App() {
         })
       }
 
-      <button onClick={()=>{ setTitle2(0) }}>글 제목0</button>
-      <button onClick={()=>{ setTitle2(1) }}>글 제목1</button>
-      <button onClick={()=>{ setTitle2(2) }}>글 제목2</button>
+      <input onChange={(e) => { 
+        입력값변경(e.target.value);
+        console.log(입력값)
+        }} />
 
       {
-        onModal === true ? <Modal title2={title2} 글제목={title} 글제목2={setTitle}/> : null
+        onModal === true 
+        ? <Modal title2={title2} 글제목={title} 글제목2={setTitle}/>
+        : null
       }
+      
     </div>
   );
 }
-
 
 const Modal = (props) => {
   return(
@@ -70,6 +74,5 @@ const Modal = (props) => {
     </div>
   ) 
 }
-
 
 export default App;
