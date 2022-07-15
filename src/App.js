@@ -11,7 +11,19 @@ function App() {
   let [onModal, setOnModal] = useState(false);
   let [title2, setTitle2] = useState(0);
   let [입력값, 입력값변경] = useState('');
+  const [date, setDate] = useState(['','','']);
+  const today = new Date();
 
+  const block = () => {
+    if(입력값==='') {
+      alert('입력해주세요?');
+    } else {
+      따봉변경([0, ...따봉]); 
+      setTitle([입력값, ...title]);
+      setDate([today.getHours()+'시 ' + today.getMinutes()+'분', ...date]);
+    }
+  }
+  console.log(date);
   return (
     <div className="App">
       <div className="black-nav">
@@ -32,7 +44,6 @@ function App() {
 
       } }>성별변경</button>
 
-
       {// v=['남자코트 추천', '강남 우동 맛집', '파이썬 독학'] i=[0,1,2]
         title.map(function(v,i){
           return(
@@ -49,7 +60,7 @@ function App() {
               setTitle(titleArr);
               
             } }>글 삭제</button>
-            <p>2월 17일 발행</p>
+             <p>날짜: {date[i]}</p>
           </div>
           )
         })
@@ -59,7 +70,7 @@ function App() {
         입력값변경(e.target.value);
       }} />
 
-      <button onClick={() => {따봉변경([0, ...따봉]); setTitle([입력값, ...title])}}>글생성</button>
+      <button onClick={block}>글생성</button>
 
       {
         onModal === true 
