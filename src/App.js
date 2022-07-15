@@ -43,6 +43,12 @@ function App() {
               mapArr[i]++;
               따봉변경(mapArr);
             }}>👍 {따봉[i]}</span></h4>
+            <button onClick={ () => {
+              const titleArr = [...title];
+              titleArr.splice(i,1);
+              setTitle(titleArr);
+              
+            } }>글 삭제</button>
             <p>2월 17일 발행</p>
           </div>
           )
